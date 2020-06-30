@@ -1,0 +1,82 @@
+
+#A skeleton for implementing K-nearest Neighbor classifier in Python.
+## Author: Salem
+###Author of Knn code: Christopher Busacker
+
+import numpy
+import random
+import time
+import math
+
+trainingFile = "irisTraining.txt"
+testingFile = "irisTesting.txt"
+Xtrain = numpy.loadtxt(trainingFile)
+n = Xtrain.shape[0]
+d = Xtrain.shape[1]-1
+print (n, d)
+
+#Testing .....
+Xtest = numpy.loadtxt(testingFile)
+nn = Xtest.shape[0] # Number of points in the testing data.
+print (nn)
+tp = 0 #True Positive
+fp = 0 #False Positive
+tn = 0 #True Negative
+fn = 0 #False Negative
+
+#Iterate over all points in testing data
+  #For each point find the distances to all the training points.
+  #Choose the K points with the smallest distances
+  #Assign the class label for the testing point as the majority label of the closes K points.
+  #increment TP,FP,FN,TN accordingly, remember the true lable for the ith point is in Xtest[i,d]
+
+#}
+k1 = 5
+k2 = 11
+k3 = 21
+
+for Testpoint in Xtest:
+    distList = []
+    freq1 = 0
+    freq2 = 0
+    for Trainpoint in Xtrain:
+        temp_a = numpy.array(Testpoint[:d])
+        temp_b = numpy.array(Trainpoint[:d])
+        distList.append([numpy.linalg.norm(temp_a-temp_b), Trainpoint[d]])
+
+    distList.sort(key=lambda tup: tup[0])
+
+
+    for x in range(0,k1):
+        if(distList[x][1] == 1):
+            freq1 += 1
+        elif distList[x][1] == -1:
+            freq2 += 1
+
+    if(freq1>freq2):
+        if(Testpoint[d]==1):
+            tp += 1
+        else:
+            fp += 1
+    elif freq2>freq1:
+        if(Testpoint[d]==-1):
+            tn += 1
+        else:
+            fn += 1
+
+print(str(tp))
+print(str(fp))
+print(str(tn))
+print(str(fn))
+
+Accuracy = ((tp+tn)/(tp+fp+tn+fn))
+Sensitivity = tp/(tp+fn)
+Specificity = tn/(fp+tn)
+Precision = tp/(tp+fp)
+
+print(str(Accuracy))
+print(str(Sensitivity))
+print(str(Specificity))
+print(str(Precision))
+#Calculate all the measures required..
+ 
