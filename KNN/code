@@ -1,6 +1,3 @@
-
-#A skeleton for implementing K-nearest Neighbor classifier in Python.
-## Author: Salem
 ###Author of Knn code: Christopher Busacker
 
 import numpy
