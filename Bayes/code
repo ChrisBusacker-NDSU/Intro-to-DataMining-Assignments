@@ -1,6 +1,4 @@
-#A skeleton for implementing Naive Bayes Classifier in Python.
-## Author: Salem
-## Edited By: Chris Busacker
+#By: Chris Busacker
 
 import numpy as np
 import random
