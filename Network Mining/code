@@ -1,6 +1,4 @@
-
-## Author: Salem <Salem@SALEM-OFFICE>
-#edited by: Christopher Busacker
+#by: Christopher Busacker
 
 import matplotlib.pyplot as plt
 import numpy
